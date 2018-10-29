@@ -4,55 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.revature.model.User;
 import com.revature.util.HibernateUtil;
 
 public class UserDao {
 	
-	public List<User> getUsers() {
+	public List<User> getAllUsers() {
 		Session session = HibernateUtil.getSession();
-		return session.createQuery("from User").list();
+		
+		return session.createQuery("from user").list();
 	}
 	
-	public List<User> getEmployees() {
+	public User getByUsername(String username){
 		Session session = HibernateUtil.getSession();
-		return session.createQuery("from User where roleId = 0").list();
+		User u = null;
+		List<User> us = new ArrayList<>();
+		Session ses = HibernateUtil.getSession();
+		us = session.createQuery("from user where username = :namevar").setString("usernameVar", username).list();
+		
+		return u;
+		
 	}
 	
-	public User getUserByUserName(String uName) {
-		User uFound = null;
+	public User getByUserId(int id) {
+		Session session = HibernateUtil.getSession();
+		User u = null;
 		List<User> users = new ArrayList<>();
-		Session session = HibernateUtil.getSession();
-		
-		users = session.createQuery("from User where username = :nameVar").setString("nameVar", uName).list();
-		
-		if (!users.isEmpty()) {
-			uFound = users.get(0);
-		}
-		
-		return uFound;
-	}
-	
-	public User getUserByUserId(int id) {
-		User uFound = null;
-		List<User> users = new ArrayList<>();
-		Session session = HibernateUtil.getSession();
-		
 		users = session.createQuery("from User where username = :nameVar").setInteger("nameVar", id).list();
 		
-		if (!users.isEmpty()) {
-			uFound = users.get(0);
-		}
-		
-		return uFound;
+		return u;
 	}
 	
-	public void saveUser(User u) {
+	public void saveUser(User info) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.update(u);
+		session.update(info);
 		session.getTransaction().commit();
 	}
 }
