@@ -13,7 +13,7 @@ public class UserDao {
 	public List<User> getAllUsers() {
 		Session session = HibernateUtil.getSession();
 		
-		return session.createQuery("from user").list();
+		return session.createQuery("from user where roleid = 0").list();
 	}
 	
 	public User getByUsername(String username){
