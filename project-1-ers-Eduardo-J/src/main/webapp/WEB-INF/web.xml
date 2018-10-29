@@ -39,4 +39,34 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SubmissionServlet</display-name>
+    <servlet-name>SubmissionServlet</servlet-name>
+    <servlet-class>com.revature.servlet.SubmissionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmissionServlet</servlet-name>
+    <url-pattern>/SubmissionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResolvedServlet</display-name>
+    <servlet-name>ResolvedServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResolvedServlet</servlet-name>
+    <url-pattern>/ResolvedServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PendingServlet</display-name>
+    <servlet-name>PendingServlet</servlet-name>
+    <servlet-class>com.revature.servlet.PendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PendingServlet</servlet-name>
+    <url-pattern>/PendingServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
